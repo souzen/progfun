@@ -9,14 +9,14 @@ import common._
 import scala.math._
 
 object KM extends KMeans
+
 import KM._
 
 @RunWith(classOf[JUnitRunner])
 class KMeansSuite extends FunSuite {
 
   def checkClassify(points: GenSeq[Point], means: GenSeq[Point], expected: GenMap[Point, GenSeq[Point]]) {
-    assert(classify(points, means) == expected,
-      s"classify($points, $means) should equal to $expected")
+    assert(classify(points, means) == expected, s"classify($points, $means) should equal to $expected")
   }
 
   test("'classify should work for empty 'points' and empty 'means'") {
@@ -67,7 +67,7 @@ class KMeansSuite extends FunSuite {
   test("'classify with data parallelism should work for empty 'points' and empty 'means'") {
     val points: GenSeq[Point] = IndexedSeq()
     val means: GenSeq[Point] = IndexedSeq()
-    val expected = GenMap[Point,GenSeq[Point]]()
+    val expected = GenMap[Point, GenSeq[Point]]()
     checkParClassify(points, means, expected)
   }
 
